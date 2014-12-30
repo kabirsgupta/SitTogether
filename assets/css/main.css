@@ -1,0 +1,28 @@
+html, body {
+	/*color: #E74C3C;*/
+	color: #ECF0F1;
+	/*background-color: #F1C40F;*/
+	background-color: #333;
+    /*margin: 0 auto;*/
+    font-family: "OpenSans-Light", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.container {
+	width: 70%;
+}
+.navbar {
+	margin-bottom: 0;
+}
+.navbar-logout {
+	margin-left: 10px;
+	background-color: #3498db;
+	margin-top: 12px;
+}
+.navbar-brand {
+	margin-top: 6px; !important
+}
+.navbar-text {
+	font-size: 20px;
+}
+.navbar-pipe {
+	font-size: 24px;
+}

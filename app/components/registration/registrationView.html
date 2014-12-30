@@ -1,0 +1,53 @@
+<!-- Add a course -->
+<div class="registration-div">
+	<div class="form-div row">
+		<form class="form-inline" role="form" name="addCourseForm" ng-submit="addCourse()">
+			<!-- Choose Department -->
+				<div class="form-group" ng-class="{'has-success has-feedback':addCourseForm.inputDepartment.$valid && addCourseForm.inputDepartment.$dirty}" ng-hide="departmentInput">
+					<!-- Department Input -->
+					<div class="input-group">
+						<span class="input-group-addon" ng-show="!departmentInput"><strong>Dept:</strong></span>
+						<input name="inputDepartment" id="inputDepartment" type="search" ng-model="departmentInput" placeholder="Add a Course!" class="search form-control input-lg" typeahead="department.name as department.code + ' - ' + department.name for department in departments | filter:$viewValue | limitTo:5" typeahead-on-select="chooseDepartment($item, $model, $label)" typeahead-editable='false' focus-me="{{!departmentInput}}" required>
+						<!-- Flat-UI Success Checkmark -->
+						<span ng-show="departmentInput" class="form-control-feedback fui-check"></span>
+					</div>
+				</div> <!-- /choose department -->
+
+			<!-- Choose Course -->
+				<div class="form-group" ng-show="departmentInput" ng-hide="!departmentInput" ng-class="{'has-success has-feedback':addCourseForm.inputCourse.$valid && addCourseForm.inputCourse.$dirty && chosenCourse}">
+					<!-- Course Input -->
+					<div class="input-group">
+						<span class="input-group-addon course-input-addon" ng-show="departmentInput"><strong>{{departmentCode}} - </strong></span>
+						<input name="inputCourse" id="inputCourse" type="search" ng-model="courseInput" class="search form-control input-lg" typeahead="course.CourseData.number as course.PublishedCourseID + ' - ' + course.CourseData.title for course in courses | filter:$viewValue | limitTo:5" typeahead-on-select="chooseCourse($item, $model, $label)" focus-me="{{chosenDepartment}}" ng-keydown="courseInputKeydown($event)" ng-disabled="!courses" placeholder="101" required>
+						<!-- Flat-UI Success Checkmark -->
+						<span ng-show="chosenCourse" class="fui-check form-control-feedback"></span>
+					</div>
+				  	<!-- Loading icon -->
+					<i class="glyphicon glyphicon-refresh" ng-show="departmentCode && !chosenDepartment"></i>
+				</div> <!-- /choose course -->
+
+			<!-- Submit button -->
+			<button class="btn btn-success" type="submit" ng-disabled="!chosenCourse">Add Course</button>
+		</form>
+	</div> <!-- /add-course
+
+	<!-- User dashboard (?) -->
+	<div class="user-dashboard row">
+		<!-- TODO: SHARE/INVITE YOUR FRIENDS BUTTON -->
+
+		<!-- Current schedule -->
+		<div class="user-classes">
+			<h3 ng-show="!sessionUser.userCourses">You have no courses yet, try adding some above!</h3>
+			<div ng-repeat="userCourse in sessionUser.userCourses track by $index">
+				<!-- Delete button -->
+				<button type="button" class="btn btn-xs btn-danger" ng-click="deleteCourse(userCourse.id, $index)"><span class="fui-cross-circle"></span></button>
+				<!-- Display courses -->
+				<span><strong>{{userCourse.courseName}}</strong>
+					<span ng-show="userCourse.friends[0]"> - </span>
+					<span ng-repeat="friend in userCourse.friends track by $index">{{friend}}<span ng-show="userCourse.friends[$index+1]">, </span>
+					</span>
+				</span>
+			</div>
+		</div> <!-- /user-classes -->
+	</div> <!-- /user-dashboard -->
+</div>

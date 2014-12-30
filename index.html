@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="main">
+<head>
+	<!-- Meta shit -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Kabir Gupta">
+	<!-- Title -->
+	<title>Trojan Schedule</title>
+	<!-- CSS -->
+	<link media="all" type="text/css" rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.css">
+	<!-- <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap-theme.css"> -->
+	<link media="all" type="text/css" rel="stylesheet" href="assets/lib/flat-ui/css/flat-ui.css">
+	<link media="all" type="text/css" rel="stylesheet" href="assets/css/fonts/opensans_light/stylesheet.css">
+	<!-- https://github.com/jirikavi/AngularJS-Toaster -->
+	<link media="all" type="text/css" rel="stylesheet" href="assets/lib/toaster/toaster.css">
+	<link media="all" type="text/css" rel="stylesheet" href="assets/css/main.css">
+	<link media="all" type="text/css" rel="stylesheet" href="assets/css/login.css">
+	<link media="all" type="text/css" rel="stylesheet" href="assets/css/registration.css">
+	<!-- Parse -->
+	<script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+</head> <!-- End head -->
+<body>
+	<!-- Facebook div -->
+	<div id="fb-root"></div>
+
+	<!-- Main Container -->
+	<div class="container">
+		<!-- Allow toastr to work -->
+		<toaster-container></toaster-container>
+
+		<!-- Navbar -->
+		<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+			<div class="navbar-header">
+				<!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> -->
+	                <!-- <span class="sr-only">Toggle navigation</span> -->
+	                <!-- <span class="icon-bar"></span> -->
+	                <!-- <span class="icon-bar"></span> -->
+	                <!-- <span class="icon-bar"></span> -->
+	            <!-- </button> -->
+				<a class="navbar-brand" href="#">Trojan Schedule</a>
+			</div>
+			<div class="collapse navbar-collapse">
+			    <form class="form navbar-right" ng-submit="fbLogout()" ng-show="sessionUser.loggedIn">
+				    <button class="btn btn-info btn-embossed navbar-logout" type="submit">Logout</button>
+			    </form>
+				<p class="nav navbar-text navbar-right" ng-show="sessionUser.loggedIn">{{sessionUser.firstName}}  <span class="navbar-pipe">|</span>  </p>
+			</div>
+		</nav>	<!-- End navbar -->
+
+		<!-- Main content -->
+		<div ui-view></div>
+	</div> <!-- End main container -->
+
+	<!-- Scripts -->
+	<script src="assets/lib/jquery/jquery-1.11.1.js"></script>
+	<script src="assets/lib/angular/angular.js"></script>
+	<script src="assets/lib/angular/angular-ui-router.js"></script>
+	<script src="assets/lib/angular/angular-animate.js"></script> <!-- Required for toastr -->
+	<!-- Angular-UI Boostrap Typeahead: http://angular-ui.github.io/bootstrap/#/typeahead -->
+	<script src="assets/lib/angular/ui-bootstrap-custom-tpls-0.12.0.js"></script>
+	<script src="assets/lib/toaster/toaster.js"></script> <!-- https://github.com/jirikavi/AngularJS-Toaster -->
+	<!-- App -->
+	<script src="app/shared/course/courseService.js"></script>
+	<script src="app/shared/facebook/facebookService.js"></script>
+	<script src="app/shared/focusMe/focusMeDirective.js"></script>
+	<script src="app/components/user/userService.js"></script>
+	<script src="app/components/login/loginController.js"></script>
+	<script src="app/components/registration/registrationService.js"></script>
+	<script src="app/components/registration/registrationController.js"></script>
+	<script src="app/main.js"></script>
+</body> <!-- End body -->
+</html>

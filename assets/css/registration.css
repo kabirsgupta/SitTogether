@@ -1,0 +1,23 @@
+.registration-div {
+	margin-left: 30px;
+}
+ul {
+	list-style-type: none;
+	padding-left:0;
+}
+.title-element {
+    text-align: center;
+}
+.navbar {
+	/*margin-bottom: 0;*/
+}
+span.input-group-addon {
+	color: #ECF0F1;
+}
+span.course-input-addon {
+	background-color: #2ECC71; !important
+}
+div.form-div {
+	margin-top: 50px;
+	margin-bottom: 35px;
+}
